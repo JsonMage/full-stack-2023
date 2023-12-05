@@ -4,41 +4,69 @@ const baseUrl = 'http://localhost:3001/persons'
 
 const getAllNumbers = () => {
     console.log('Log: Sending GET request')
-    const response = axios
+    return axios
         .get(baseUrl)
         .then(response => {
             console.log('GET Response:', response.data)
             return response.data
         })
         .catch(error => console.log('Error:', error))
-    return response
 }
 
 const createNewNumber = newPerson => {
-    const response = axios
+    return axios
         .post(baseUrl, newPerson)
         .then(response => {
-          console.log('POST Response:', response)
+            console.log('POST Response:', response)
+            return {
+                message:`${newPerson.name} has been created.`,
+                type: 'success'
+            }
         })
-        .catch(error => console.log('Error:', error))
+        .catch(error => {
+            return {
+                message:`Creation of ${newPerson.name} failed.`,
+                type: 'error'
+            }
+        })
 }
 
 const deleteNumberById = id => {
-    const response = axios
+    return axios
         .delete(`${baseUrl}/${id}`)
         .then(response => {
             console.log(`Person with ID ${id} has been deleted`, response)
+            return {
+                message:`Person with ID ${id} has been deleted`,
+                type: 'success'
+            }
         })
-        .catch(error => console.error('Delete operation has failed...', error))
+        .catch(error => {
+            return {
+                message: `Person with ID ${id} not found.`,
+                type: 'error'
+            }
+        })
 }
 
 const updateNumber = (newPerson) => {
-    const response = axios
+    return axios
         .put(`${baseUrl}/${newPerson.id}`, newPerson)
         .then(response => {
-          console.log('PUT Response:', response)
+            console.log('PUT Response:', response)
+            return {
+                message: `${newPerson.name} has been updated.`,
+                type: 'success'
+            }
         })
-        .catch(error => console.log('Error:', error))
+        .catch(() => {
+            return {
+                message: `${newPerson.name} not found.`,
+                type: 'error'
+            }
+        })
 }
+
+
 
 export default { getAllNumbers, createNewNumber, deleteNumberById, updateNumber }

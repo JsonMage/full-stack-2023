@@ -1,0 +1,24 @@
+{
+  "persons": [
+    {
+      "name": "Dan Abramov",
+      "number": "12-43-234345",
+      "id": 3
+    },
+    {
+      "name": "Mary Poppendieck",
+      "number": "432",
+      "id": 4
+    },
+    {
+      "name": "Ron Swanson",
+      "number": "555-789-321",
+      "id": "6abee415-de2b-40b0-ac74-e0394c1537e7"
+    },
+    {
+      "name": "Ronan Assante",
+      "number": "123-456-789",
+      "id": "b008d4db-c513-4a42-8d17-52875998b769"
+    }
+  ]
+}
